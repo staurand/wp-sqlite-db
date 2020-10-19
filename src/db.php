@@ -2928,6 +2928,7 @@ HTML
                 case 'select':
                     //$this->strip_backticks();
                     $this->handle_sql_count();
+                    $this->rewrite_date_add();
                     $this->rewrite_date_sub();
                     $this->delete_index_hints();
                     $this->rewrite_regexp();
@@ -2938,6 +2939,8 @@ HTML
                     break;
                 case 'insert':
                     //$this->safe_strip_backticks();
+                    $this->rewrite_date_add();
+                    $this->rewrite_date_sub();
                     $this->execute_duplicate_key_update();
                     $this->rewrite_insert_ignore();
                     $this->rewrite_regexp();
@@ -2946,7 +2949,8 @@ HTML
                 case 'update':
                     //$this->safe_strip_backticks();
                     $this->rewrite_update_ignore();
-                    //$this->_rewrite_date_sub();
+                    $this->rewrite_date_add();
+                    $this->rewrite_date_sub();
                     $this->rewrite_limit_usage();
                     $this->rewrite_order_by_usage();
                     $this->rewrite_regexp();
@@ -2956,12 +2960,14 @@ HTML
                     //$this->strip_backticks();
                     $this->rewrite_limit_usage();
                     $this->rewrite_order_by_usage();
+                    $this->rewrite_date_add();
                     $this->rewrite_date_sub();
                     $this->rewrite_regexp();
                     $this->delete_workaround();
                     break;
                 case 'replace':
                     //$this->safe_strip_backticks();
+                    $this->rewrite_date_add();
                     $this->rewrite_date_sub();
                     $this->rewrite_regexp();
                     break;
